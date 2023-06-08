@@ -5,9 +5,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import PublicIcon from '@mui/icons-material/Public';
 import React from 'react';
+import logo from '../../../assets/img/logo/1.png';
 import { NavLink } from 'react-router-dom';
 import { Divider } from '@chakra-ui/react';
 import ROUTE from '../../../utils/routes.json'
+import Copyright from '@mui/icons-material/Copyright';
 const routes = ROUTE[0];
 interface IContact {
   icon: React.ReactNode;
@@ -54,8 +56,8 @@ const listSupports: ISupport[] = [
 ]
 const listConnect: IConnect[] = [
   { icon: <FacebookIcon />, href: routes.routes_user.social.facebook },
-  { icon: <InstagramIcon />, href: routes.routes_user.social.instagram},
-  { icon: <LocationOnIcon />, href: routes.routes_user.social.map}
+  { icon: <InstagramIcon />, href: routes.routes_user.social.instagram },
+  { icon: <LocationOnIcon />, href: routes.routes_user.social.map }
 ]
 const Footer = () => {
   return (
@@ -113,7 +115,11 @@ const Footer = () => {
         <Divider style={{
           borderColor: 'white'
         }} />
-        <div className="location p-3">
+        <div className="flex flex-col space-y-4 justify-center items-center">
+          <img src={logo} alt="logo" className='rounded-full w-24 md:w-28 lg:w-32 xl:w-36 shadow-yellow-400 shadow-lg' />
+          <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-center'>ÂM NHẠC - NIỀM VUI CUỘC SỐNG</h1>
+        </div>
+        <div className="location px-3">
           <h1 className='text-center'>
             Công ty TNHH Âm nhạc RON ~ T - MST: 0392477615 - Do Sở kế hoạch và đầu tư TPDN cấp ngày 19/10/2023
           </h1>
@@ -121,7 +127,7 @@ const Footer = () => {
             Trụ sở chính: Ngũ Hành Sơn, Đà Nẵng
           </h2>
         </div>
-        <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-center pb-3'>ÂM NHẠC - NIỀM VUI CUỘC SỐNG</h1>
+        <p className='text-center pb-3'><Copyright />2023 ~ RON</p>
       </div>
     </footer>
   )

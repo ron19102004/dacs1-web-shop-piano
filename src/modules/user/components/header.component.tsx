@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './style.component.scss'
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import logo from '../../../assets/img/logo/1.png';
 import ROUTE from '../../../utils/routes.json'
 const routes = ROUTE[0];
 interface INavLink {
@@ -22,7 +23,7 @@ const Header = () => {
   return (
     <header className="min-w-screen lg:py-2 z-50 relative lg:static">
       <div className="status-mobile flex justify-between lg:hidden">
-        <div className="icon-status">
+        <div className="icon-status my-auto mx-1">
           {openMenu ?
             <button onClick={changeMenu}>
               <CloseIcon className='border-2 rounded-md' style={{
@@ -36,16 +37,18 @@ const Header = () => {
             </button>
           }
         </div>
-        <div className="lg:hidden logo my-auto px-5">
-          <h1 className='font-bold text-2xl'>R O N ~ T</h1>
+        <div className="lg:hidden logo my-auto flex space-x-3 py-1">
+          <h1 className='font-bold text-2xl my-auto'>R O N ~ T</h1>
+          <img src={logo} alt="logo" className='w-10 rounded-full shadow-yellow-400 shadow-md' />
         </div>
       </div>
       <div className={`${openMenu ? '' : 'hidden'} absolute lg:static w-[100%] lg:block wrap-nav`}>
         <nav className="container mx-auto flex lg:flex-row flex-col justify-around">
-          <div className="hidden lg:block logo my-auto">
-            <h1 className='font-bold text-4xl'>R O N ~ T</h1>
+          <div className="hidden logo my-auto lg:flex space-x-2">
+            <img src={logo} alt="logo" className='w-14 rounded-full shadow-yellow-400 shadow-md' />
+            <h1 className='font-bold text-4xl my-auto'>R O N ~ T</h1>
           </div>
-          <ul className="flex flex-col lg:flex-row lg:space-x-7 space-y-4 lg:space-y-0 my-auto lg:py-3 lg:px-10 p-3 bg-slate-200 lg:rounded-3xl shadow-sm bg-4 font-bold text-blue-950">
+          <ul className="flex flex-col lg:flex-row lg:space-x-7 space-y-4 lg:space-y-0 my-auto lg:py-3 lg:px-10 p-3 bg-slate-200 lg:rounded-3xl bg-4 font-bold text-blue-950">
             {listLink.map((item: INavLink, index: number) => {
               return (
                 <li key={index} className='li-list' onClick={changeMenu}>

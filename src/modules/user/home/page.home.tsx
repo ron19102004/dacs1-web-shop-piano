@@ -17,9 +17,9 @@ const HomePage = () => {
   return (
     <div className="main space-y-3 sm:space-y-5 lg:space-y-8 xl:space-y-10">
       <div className="relative banner">
-        <img src={banner} alt="banner" className='w-screen h-28 sm:h-52 lg:h-96 object-cover' />
+        <img src={banner} alt="banner" className='w-screen h-40 sm:h-52 lg:h-96 object-cover' />
         <div className="absolute gr-btn-control w-[100%] h-[100%] top-0 left-0 text-center flex flex-col justify-end items-center">
-          <div className="wrap-btn-control space-x-40 lg:space-x-10">
+          <div className="wrap-btn-control space-x-14 lg:space-x-10">
             <button onClick={playAudio}>
               <PlayCircleIcon style={{
                 fontSize: '50px'
