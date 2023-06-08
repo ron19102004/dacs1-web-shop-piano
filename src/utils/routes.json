@@ -1,0 +1,29 @@
+[
+  {
+    "routes_user": {
+      "home": "/",
+      "product": {
+        "/": "/",
+        "grand-piano": "/products/grand-piano",
+        "grand-electronic": "/products/grand-electronic",
+        "piano-steinway-sons": "/products/piano-steinway-sons"
+      },
+      "about_us": "/about-us",
+      "contact": "/contact",
+      "policy": {
+        "warranty-policy": "/warranty-policy",
+        "upgrade-policy": "/upgrade-policy",
+        "payment-policy": "/payment-policy",
+        "delivery-policy": "/delivery-policy"
+      },
+      "social": {
+        "facebook": "https://www.facebook.com/ron292004/",
+        "instagram": "none",
+        "map": "none",
+        "email": "dungtna.22itb@gmail.com",
+        "website": "https://dacs1-web-shop-piano.vercel.app/"
+      }
+    },
+    "login": "/login"
+  }
+]

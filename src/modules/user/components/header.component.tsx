@@ -4,15 +4,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import './style.component.scss'
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import ROUTE from '../../../utils/routes.json'
+const routes = ROUTE[0];
 interface INavLink {
   title: string;
   to: string;
 }
 const listLink: INavLink[] = [
-  { title: 'Trang chủ', to: '/' },
-  { title: 'Sản phẩm', to: '/product' },
-  { title: 'Về chúng tôi', to: '/about-us' },
-  { title: 'Liên hệ', to: '/contact' }
+  { title: 'Trang chủ', to: routes.routes_user.home },
+  { title: 'Sản phẩm', to: routes.routes_user.product['/'] },
+  { title: 'Về chúng tôi', to: routes.routes_user.about_us },
+  { title: 'Liên hệ', to: routes.routes_user.contact }
 ]
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -58,7 +60,7 @@ const Header = () => {
             })}
           </ul>
           <div className="gr-status-right my-auto flex flex-col lg:flex-row bg-1">
-            <NavLink to='/login' className={'login flex font-bold cl-4 space-x-1 border-2 border-cyan-700 py-2 px-3 lg:rounded-full hover:border-cyan-500'}>
+            <NavLink to={routes.login} className={'login flex font-bold cl-4 space-x-1 border-2 border-cyan-700 py-2 px-3 lg:rounded-full hover:border-cyan-500'}>
               <h1>Login</h1>
               <div className="arrow">
                 <ArrowRightAltIcon className='icon-arrow' />

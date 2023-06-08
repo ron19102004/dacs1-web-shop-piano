@@ -1,17 +1,38 @@
-import banner from '../../../assets/baner-landingpage.png'
-import banner_grand from '../../../assets/banner-grand-piano-duc-tri.jpg'
-import banner_electron from '../../../assets/home-product-banner-3.png'
-import banner_s from '../../../assets/home-product-banner-4.png'
-import trust1 from '../../../assets/home-1.svg'
-import trust2 from '../../../assets/home-2.svg'
-import trust3 from '../../../assets/home-3.svg'
-import trust4 from '../../../assets/home-4.svg'
+import banner from '../../../assets/img/baner-landingpage.png'
+import banner_grand from '../../../assets/img/banner-grand-piano-duc-tri.jpg'
+import banner_electron from '../../../assets/img/home-product-banner-3.png'
+import banner_s from '../../../assets/img/home-product-banner-4.png'
+import trust1 from '../../../assets/img/home-1.svg'
+import trust2 from '../../../assets/img/home-2.svg'
+import trust3 from '../../../assets/img/home-3.svg'
+import trust4 from '../../../assets/img/home-4.svg'
+import cung_chuc_trinh_vuong from '../../../assets/audio/y2meta.com - CUNG CHÚC TRINH VƯƠNG - Lm Hoài Đức __ Piano Thánh Ca (128 kbps).mp3'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PausePresentationIcon from '@mui/icons-material/PausePresentation';
 import './style.home.scss'
 const HomePage = () => {
+  const audio = new Audio(cung_chuc_trinh_vuong)
+  const playAudio = async () => await audio.play()
+  const pauseAudio = async () => audio.pause();
   return (
     <div className="main space-y-3 sm:space-y-5 lg:space-y-8 xl:space-y-10">
-      <div className="banner">
+      <div className="relative banner">
         <img src={banner} alt="banner" className='w-screen h-28 sm:h-52 lg:h-96 object-cover' />
+        <div className="absolute gr-btn-control w-[100%] h-[100%] top-0 left-0 text-center flex flex-col justify-end items-center">
+          <div className="wrap-btn-control space-x-40 lg:space-x-10">
+            <button onClick={playAudio}>
+              <PlayCircleIcon style={{
+                fontSize: '50px'
+              }} />
+            </button>
+            <button onClick={pauseAudio}>
+              <PausePresentationIcon
+                style={{
+                  fontSize: '50px'
+                }} />
+            </button>
+          </div>
+        </div>
       </div>
       <div className="trust container mx-auto space-y-4">
         <h1 className='text-center font-bold text-xl lg:text-2xl xl:text-3xl cl-4 '>VÌ SAO NÊN CHỌN CHÚNG TÔI</h1>

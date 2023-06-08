@@ -6,6 +6,14 @@ $color2: #04293A;
 $color3: #064663;
 $color4: #ECB365;
 $color5: #146C94;
+body::-webkit-scrollbar{
+  width: 8px;
+  background-color: #ECB365;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: $color2;
+  border-radius: 10px;
+}
 .cl-1{
   color: $color1;
 }
