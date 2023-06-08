@@ -2,7 +2,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import './style.component.scss'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../../../assets/img/logo/1.png';
 import ROUTE from '../../../utils/routes.json'
@@ -20,6 +20,7 @@ const listLink: INavLink[] = [
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const changeMenu = () => setOpenMenu(!openMenu);
+  const navigate = useNavigate()
   return (
     <header className="min-w-screen lg:py-2 z-50 relative lg:static">
       <div className="status-mobile flex justify-between lg:hidden">
@@ -37,15 +38,15 @@ const Header = () => {
             </button>
           }
         </div>
-        <div className="lg:hidden logo my-auto flex space-x-3 py-1">
+        <div className="lg:hidden my-auto flex space-x-3 py-1">
           <h1 className='font-bold text-2xl my-auto'>R O N ~ T</h1>
-          <img src={logo} alt="logo" className='w-10 rounded-full shadow-yellow-400 shadow-md' />
+          <img src={logo} alt="logo" className='logo w-10 rounded-full shadow-yellow-400 shadow-md cursor-pointer' onClick={() => navigate('/')} />
         </div>
       </div>
       <div className={`${openMenu ? '' : 'hidden'} absolute lg:static w-[100%] lg:block wrap-nav`}>
         <nav className="container mx-auto flex lg:flex-row flex-col justify-around">
-          <div className="hidden logo my-auto lg:flex space-x-2">
-            <img src={logo} alt="logo" className='w-14 rounded-full shadow-yellow-400 shadow-md' />
+          <div className="hidden my-auto lg:flex space-x-2">
+            <img src={logo} alt="logo" className='logo w-14 rounded-full cursor-pointer' onClick={() => navigate('/')} />
             <h1 className='font-bold text-4xl my-auto'>R O N ~ T</h1>
           </div>
           <ul className="flex flex-col lg:flex-row lg:space-x-7 space-y-4 lg:space-y-0 my-auto lg:py-3 lg:px-10 p-3 bg-slate-200 lg:rounded-3xl bg-4 font-bold text-blue-950">

@@ -3,9 +3,9 @@
     "routes_user": {
       "home": "/",
       "product": {
-        "/": "/",
+        "/": "/products",
         "grand-piano": "/products/grand-piano",
-        "grand-electronic": "/products/grand-electronic",
+        "piano-electronic": "/products/piano-electronic",
         "piano-steinway-sons": "/products/piano-steinway-sons"
       },
       "about_us": "/about-us",

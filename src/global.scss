@@ -1,46 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-$color1:#041C32;
+$color1: #041C32;
 $color2: #04293A;
 $color3: #064663;
 $color4: #ECB365;
 $color5: #146C94;
-body::-webkit-scrollbar{
+
+html {
+  box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
   width: 8px;
   background-color: #ECB365;
 }
-body::-webkit-scrollbar-thumb{
+
+body::-webkit-scrollbar-thumb {
   background-color: $color2;
   border-radius: 10px;
 }
-.cl-1{
+
+.cl-1 {
   color: $color1;
 }
-.cl-2{
+
+.cl-2 {
   color: $color2;
 }
-.cl-3{
+
+.cl-3 {
   color: $color3;
 }
-.cl-4{
+
+.cl-4 {
   color: $color4;
 }
-.cl-5{
+
+.cl-5 {
   color: $color5;
 }
-.bg-1{
+
+.bg-1 {
   background-color: $color1;
 }
-.bg-2{
+
+.bg-2 {
   background-color: $color2;
 }
-.bg-3{
+
+.bg-3 {
   background-color: $color3;
 }
-.bg-4{
+
+.bg-4 {
   background-color: $color4;
 }
-.bg-5{
+
+.bg-5 {
   background-color: $color5;
+}
+
+.logo {
+  box-shadow: 0px 0px 7px 5px $color4;
+
+  &:hover {
+    animation: zoom .5s linear infinite;
+  }
+
+  @keyframes zoom {
+    0%{
+      box-shadow: 0px 0px 10px 5px $color4;
+    }
+    25%{
+      box-shadow: 0px 0px 7px 5px $color4;
+    }
+    50%{
+      box-shadow: 0px 0px 5px 5px $color4;
+    }
+    75%{
+      box-shadow: 0px 0px 7px 5px $color4;
+    }
+    100%{
+      box-shadow: 0px 0px 10px 5px $color4;
+    }
+  }
 }

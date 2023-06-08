@@ -10,8 +10,12 @@ import cung_chuc_trinh_vuong from '../../../assets/audio/y2meta.com - CUNG CHÚC
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PausePresentationIcon from '@mui/icons-material/PausePresentation';
 import './style.home.scss'
+import ROUTE from '../../../utils/routes.json'
+import { useNavigate } from 'react-router-dom'
+const routes = ROUTE[0];
 const HomePage = () => {
   const audio = new Audio(cung_chuc_trinh_vuong)
+  const navigate = useNavigate();
   const playAudio = async () => await audio.play()
   const pauseAudio = async () => audio.pause();
   return (
@@ -66,7 +70,9 @@ const HomePage = () => {
                   Những chiếc đàn piano được đặt hàng riêng và sản xuất với số lượng giới hạn, nói lên đẳng cấp và thẩm mỹ của người sở hữu.
                 </p>
               </div>
-              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'>
+              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
+                onClick={() => navigate(routes.routes_user.product['grand-piano'])}
+              >
                 Xem thêm
               </button>
             </div>
@@ -82,7 +88,9 @@ const HomePage = () => {
                   Âm thanh mạnh mẽ, phím đàn phản hồi tinh tế cùng vẻ ngoài sang trọng, chiếc Piano luôn đem lại trải nghiệm tốt nhất cho người chơi
                 </p>
               </div>
-              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'>
+              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
+                onClick={() => navigate(routes.routes_user.product['piano-electronic'])}
+              >
                 Xem thêm
               </button>
             </div>
@@ -99,7 +107,9 @@ const HomePage = () => {
                   hồi tinh tế cùng vẻ ngoài sang trọng, chiếc Piano luôn đem lại trải nghiệm tốt nhất cho người chơi
                 </p>
               </div>
-              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'>
+              <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
+                onClick={() => navigate(routes.routes_user.product['piano-steinway-sons'])}
+              >
                 Xem thêm
               </button>
             </div>

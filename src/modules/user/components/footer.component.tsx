@@ -6,7 +6,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PublicIcon from '@mui/icons-material/Public';
 import React from 'react';
 import logo from '../../../assets/img/logo/1.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Divider } from '@chakra-ui/react';
 import ROUTE from '../../../utils/routes.json'
 import Copyright from '@mui/icons-material/Copyright';
@@ -41,11 +41,10 @@ const listContacts: IContact[] = [
     }} />, content: "0386069287"
   },
   { icon: <EmailIcon />, content: routes.routes_user.social.email },
-  { icon: <PublicIcon />, content: routes.routes_user.social.website }
 ]
 const bestSeller: IGoods[] = [
   { content: "Grand Piano", href: routes.routes_user.product['grand-piano'] },
-  { content: "Piano điện", href: routes.routes_user.product['grand-electronic'] },
+  { content: "Piano điện", href: routes.routes_user.product['piano-electronic'] },
   { content: "Piano Steinway & Sons", href: routes.routes_user.product['piano-steinway-sons'] }
 ]
 const listSupports: ISupport[] = [
@@ -60,6 +59,7 @@ const listConnect: IConnect[] = [
   { icon: <LocationOnIcon />, href: routes.routes_user.social.map }
 ]
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer className="min-w-screen">
       <div className="container mx-auto space-y-5">
@@ -74,6 +74,12 @@ const Footer = () => {
                 </li>
               )
             })}
+            <li>
+              <NavLink to={routes.routes_user.social.website} className={'flex space-x-2'}>
+                <PublicIcon />
+                <h3>{routes.routes_user.social.website}</h3>
+              </NavLink>
+            </li>
           </ul>
           <ul className='goods-best-seller space-y-3 p-3'>
             <h1 className='text-xl lg:text-2xl xl:text-3xl font-bold cl-4'>SẢN PHẨM THẾ MẠNH</h1>
@@ -116,7 +122,7 @@ const Footer = () => {
           borderColor: 'white'
         }} />
         <div className="flex flex-col space-y-4 justify-center items-center">
-          <img src={logo} alt="logo" className='rounded-full w-24 md:w-28 lg:w-32 xl:w-36 shadow-yellow-400 shadow-lg' />
+          <img src={logo} alt="logo" className='logo rounded-full w-24 md:w-28 lg:w-32 xl:w-36 cursor-pointer' onClick={() => navigate('/')}/>
           <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-center'>ÂM NHẠC - NIỀM VUI CUỘC SỐNG</h1>
         </div>
         <div className="location px-3">
