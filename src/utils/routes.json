@@ -19,11 +19,12 @@
       "social": {
         "facebook": "https://www.facebook.com/ron292004/",
         "instagram": "none",
-        "map": "none",
+        "map": "localhost",
         "email": "dungtna.22itb@gmail.com",
         "website": "https://dacs1-web-shop-piano.vercel.app/"
       }
     },
-    "login": "/login"
+    "login": "/login",
+    "register": "/register"
   }
 ]

@@ -122,7 +122,7 @@ const Footer = () => {
           borderColor: 'white'
         }} />
         <div className="flex flex-col space-y-4 justify-center items-center">
-          <img src={logo} alt="logo" className='logo rounded-full w-24 md:w-28 lg:w-32 xl:w-36 cursor-pointer' onClick={() => navigate('/')}/>
+          <img src={logo} alt="logo" className='logo rounded-full  w-24 md:w-28 lg:w-32 xl:w-36 cursor-pointer' onClick={() => navigate('/')}/>
           <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold text-center'>ÂM NHẠC - NIỀM VUI CUỘC SỐNG</h1>
         </div>
         <div className="location px-3">
