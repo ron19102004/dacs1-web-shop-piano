@@ -9,7 +9,7 @@ import ROUTE from '../../../utils/routes.json'
 import logo from '../../../assets/img/logo/1.png'
 const routes = ROUTE[0];
 const LoginPage = () => {
-  const user = useSelector((state: any) => state.auth.login.userCurrent);
+  const user = useSelector((state: any) => state.persisted.auth.login.userCurrent);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ const LoginPage = () => {
         autoPlay={true}
         muted={true} loop
         className="w-[100%]"></video>
-      <div className="main-login md:absolute top-0 left-0 w-full h-full text-blue-950 md:text-white flex flex-col justify-center items-center">
+      <div className="main-login xl:absolute top-0 left-0 w-full h-full text-blue-950 xl:text-white flex flex-col justify-center items-center">
         <form className="form-login space-y-2 w-full md:w-[28rem]  p-11 rounded-md ">
           <div className="img-logo flex flex-col justify-center items-center">
             <img src={logo} alt="logo" className="logo rounded-full w-20 cursor-pointer" onClick={() => navigate(routes.routes_user.home)} />
@@ -44,14 +44,14 @@ const LoginPage = () => {
           <div className="gr-input-item flex flex-col">
             <label>Tên tài khoản / email</label>
             <input type="text" placeholder="Nhập tên tài khoản hoặc email"
-              className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1" required
+              className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 xl:border-0 cl-1" required
               onChange={(e: any) => setUsername(e.target.value)}
             />
           </div>
           <div className="gr-input-item flex flex-col">
             <label>Mật khẩu</label>
             <input type="password" placeholder="*****************"
-              className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 md:border-0 cl-1" required
+              className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 xl:border-0 cl-1" required
               onChange={(e: any) => setPassword(e.target.value)}
             />
           </div>

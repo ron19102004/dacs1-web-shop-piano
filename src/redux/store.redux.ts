@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-import authReducer from "./slide.redux";
+import { authReducer, productReducer } from "./slide.redux";
 import {
   persistStore,
   persistReducer,
@@ -17,11 +17,14 @@ const persistConfig = {
 };
 const rootReducer = combineReducers({
   auth: authReducer,
+  product: productReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    persisted: persistedReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -1,21 +1,42 @@
 import { useEffect, useState } from "react";
-import { IProduct, categoryProduct, products } from "../../../utils/resApiProduct";
+import { IProduct, categoryProduct, findByCategory} from "../../../utils/resApiProduct";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Divider } from "@chakra-ui/react";
 import logo from '../../../assets/img/banner-grand-piano-duc-tri.jpg'
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Products = () => {
-  const [listProduct, setProducts] = useState<IProduct[] | any>()
+  const [listProduct, setListProduct] = useState<IProduct[] | any>();
+  const products = useSelector((state: any) => state.persisted.product.products)
+  const [selected, setSelected] = useState('0');
+  const navigate = useNavigate()
   useEffect(() => {
-    const init = async () => {
-      // const products_ = await findAllProducts();
-      const products_ = products
-      setProducts(products_);
+    const init = () => {
+      setListProduct(products);
     }
     init();
   }, [])
-  // const getProductsGrand = () => {
-  //   // console.log(findByCategory(products, categoryProduct.grand));
-  // }
+  const filterCategory = () => {
+    if (selected.trim() === '0') {
+      setListProduct(products);
+      return;
+    }
+    if (selected.trim() === categoryProduct.electronic.trim()) {
+      const data = findByCategory(products, categoryProduct.electronic);
+      setListProduct(data);
+      return
+    }
+    if (selected.trim() === categoryProduct.grand.trim()) {
+      const data = findByCategory(products, categoryProduct.grand);
+      setListProduct(data);
+      return
+    }
+    if (selected.trim() === categoryProduct.steinway_sons.trim()) {
+      const data = findByCategory(products, categoryProduct.steinway_sons);
+      setListProduct(data);
+      return
+    }
+  }
   return (
     <div className="wrap-product container mx-auto space-y-5">
       <div className="gr-product-header lg:flex justify-between items-center px-3">
@@ -23,13 +44,17 @@ const Products = () => {
         <div className="gr-header-right sm:flex sm:space-x-5 space-y-2 sm:space-y-0">
           <h1 className="text-lg cl-4 font-semibold">Bộ lọc theo danh mục:</h1>
           <div className="gr-filter space-x-2">
-            <select className="category text-black outline-none h-7 rounded-md">
+            <select className="category text-black outline-none h-7 rounded-md"
+              onChange={(e: any) => setSelected(e.target.value)}
+            >
               <option value="0">Tất cả</option>
               <option value={categoryProduct.grand}>Piano grand</option>
               <option value={categoryProduct.electronic}>Piano điện</option>
               <option value={categoryProduct.steinway_sons}>Piano Steinway & Sons</option>
             </select>
-            <button className="border-2 rounded-lg border-yellow-400">
+            <button className="border-2 rounded-lg border-yellow-400"
+              onClick={filterCategory}
+            >
               <FilterAltIcon style={{
                 color: 'yellow'
               }} />
@@ -58,8 +83,16 @@ const Products = () => {
                 </div>
               </div>
               <div className="card-footer-product flex justify-around ">
-                <button className="border-2 py-1 px-4 rounded bg-4 cl-1 hover:bg-yellow-900 hover:text-yellow-50 transition-all">Đặt ngay </button>
-                <button className="transition-all border-2 py-1 px-4 rounded hover:bg-white hover:text-black">Xem thêm</button>
+                <button className="border-2 py-1 px-4 rounded bg-4 cl-1 hover:bg-yellow-900 hover:text-yellow-50 transition-all"
+                  onClick={() => {
+                    navigate(`/booking/${item.id}`)
+                  }}
+                >Đặt ngay </button>
+                <button className="transition-all border-2 py-1 px-4 rounded hover:bg-white hover:text-black"
+                  onClick={() => {
+                    navigate(`/products/${item.id}`)
+                  }}
+                >Xem thêm</button>
               </div>
             </div>
           )

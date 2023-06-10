@@ -4,6 +4,7 @@
       "home": "/",
       "product": {
         "/": "/products",
+        "/:id": "/products/:id",
         "grand-piano": "/products/grand-piano",
         "piano-electronic": "/products/piano-electronic",
         "piano-steinway-sons": "/products/piano-steinway-sons"
@@ -16,6 +17,7 @@
         "payment-policy": "/payment-policy",
         "delivery-policy": "/delivery-policy"
       },
+      "booking": "/booking/:id",
       "social": {
         "facebook": "https://www.facebook.com/ron292004/",
         "instagram": "none",

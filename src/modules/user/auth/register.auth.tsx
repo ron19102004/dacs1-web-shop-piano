@@ -7,7 +7,7 @@ const routes = ROUTE[0];
 import './style.auth.scss'
 import logo from '../../../assets/img/logo/1.png'
 const RegisterPage = () => {
-  const user = useSelector((state: any) => state.auth.login.userCurrent);
+  const user = useSelector((state: any) => state.persisted.auth.login.userCurrent);
   const navigate = useNavigate()
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');

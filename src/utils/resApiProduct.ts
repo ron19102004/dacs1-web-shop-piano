@@ -1,14 +1,19 @@
 import axios from "axios";
 import ENV from "../utils/env.json";
+import {
+  errorUpdateProduct,
+  startUpdateProduct,
+  updateProduct,
+} from "../redux/slide.redux";
 const env = ENV[0];
 export enum categoryProduct {
   grand = "Grand",
   electronic = "Electronic",
   steinway_sons = "Steinway-sons",
 }
-export enum statusProduct{
+export enum statusProduct {
   exists = "CÒN HÀNG",
-  end = "HẾT HÀNG"
+  end = "HẾT HÀNG",
 }
 export interface IProduct {
   id: number;
@@ -20,8 +25,8 @@ export interface IProduct {
   color: string;
   brand: string;
   origin: string;
-  quantity:number;
-  status:string;
+  quantity: number;
+  status: string;
 }
 export interface ICreateProductDto {
   name: string;
@@ -35,7 +40,7 @@ export interface ICreateProductDto {
   quantity: number;
   status: string;
 }
-const item:IProduct = {
+const item: IProduct = {
   name: "ĐÀN PIANO STEINWAY LOUIS M-170",
   img: "https://pianoductri.com/wp-content/uploads/2023/03/Dan-Piano-Yamaha-YU3SZ.jpg",
   description: `Thiết kế Louis XV trên đàn Piano Steinway Louis M-170
@@ -55,21 +60,22 @@ const item:IProduct = {
   origin: "New York",
   id: 1,
   quantity: 10,
-  status: statusProduct.exists
-}
+  status: statusProduct.exists,
+};
 const products: IProduct[] = [];
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
-products.push(item)
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
+products.push(item);
 
-const findAllProducts = async () => {
+const findAllProducts = async (dispatch: any) => {
+  dispatch(startUpdateProduct());
   try {
     const res = await axios.get(`${env.api}`, {
       headers: {
@@ -78,6 +84,7 @@ const findAllProducts = async () => {
       },
     });
     if (res.status !== 200) return;
+    const products: IProduct[] = [];
     for (let i = 0; i < res.data.length; i++) {
       const item: IProduct = res.data[i];
       const index = products.findIndex((p) => p.id === item.id);
@@ -85,8 +92,9 @@ const findAllProducts = async () => {
         products.push(item);
       }
     }
-    return products;
+    dispatch(updateProduct(products));
   } catch (error) {
+    dispatch(errorUpdateProduct());
     console.log("error", error);
   }
 };
@@ -98,7 +106,15 @@ const findByCategory = (products: IProduct[] | any, category: string) => {
   );
   return data;
 };
-const createProduct = async (product: ICreateProductDto) => {
+const findByIdProduct = (products: IProduct[] | any, id: string) => {
+  for (let i = 0; i < products.length; i++) {
+    if ((products[i].id+'').trim()=== id.trim()) {
+      return products[i];
+    }
+  }
+  return null;
+};
+const createProduct = async (product: ICreateProductDto, dispatch: any) => {
   try {
     const data = {
       id: "INCREMENT",
@@ -111,7 +127,7 @@ const createProduct = async (product: ICreateProductDto) => {
       brand: product.brand,
       origin: product.origin,
       quantity: product.quantity,
-      status: product.status
+      status: product.status,
     };
     const res = await axios.post(`${env.api}`, data, {
       headers: {
@@ -120,8 +136,9 @@ const createProduct = async (product: ICreateProductDto) => {
       },
     });
     console.log(res);
+    findAllProducts(dispatch);
   } catch (error) {
     console.log(error);
   }
 };
-export { findAllProducts, findByCategory , createProduct, products};
+export { findAllProducts, findByCategory, createProduct, products,findByIdProduct };
