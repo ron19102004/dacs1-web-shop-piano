@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { login } from "../../../utils/resApiAccount";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "@chakra-ui/react";
-// import videoBG from '../../../assets/video/y2meta.com-Jarrod Radnich - Pirates Forever - Virtuosic Piano Solo-(1080p).mp4'
+import videoBG from '../../../assets/video/bg-auth.mp4'
 import { useNavigate } from "react-router-dom";
 import './style.auth.scss'
 import ROUTE from '../../../utils/routes.json'
@@ -31,10 +31,10 @@ const LoginPage = () => {
   }
   return (
     <main className="min-w-screen min-h-screen relative">
-      {/* <video src={videoBG}
+      <video src={videoBG}
         autoPlay={true}
         muted={true} loop
-        className="w-[100%]"></video> */}
+        className="w-[100%]"></video>
       <div className="main-login md:absolute top-0 left-0 w-full h-full text-blue-950 md:text-white flex flex-col justify-center items-center">
         <form className="form-login space-y-2 w-full md:w-[28rem]  p-11 rounded-md ">
           <div className="img-logo flex flex-col justify-center items-center">

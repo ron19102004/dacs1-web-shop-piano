@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-// import videoBG from '../../../assets/video/y2meta.com-Jarrod Radnich - Pirates Forever - Virtuosic Piano Solo-(1080p).mp4'
+import videoBG from '../../../assets/video/bg-auth.mp4'
 import ROUTE from '../../../utils/routes.json'
 const routes = ROUTE[0];
 import './style.auth.scss'
@@ -38,10 +38,10 @@ const RegisterPage = () => {
   }
   return (
     <main className="min-w-screen min-h-screen relative">
-      {/* <video src={videoBG}
+      <video src={videoBG}
         autoPlay={true}
         muted={true} loop
-        className="w-[100%]"></video> */}
+        className="w-[100%]"></video>
       <div className="main-login xl:absolute top-0 left-0 w-full h-full text-blue-950 md:text-white flex flex-col justify-center items-center">
         <form className="form-register space-y-2 w-full xl:w-[60rem]  p-11 rounded-md ">
           <div className="img-logo flex flex-col justify-center items-center">
