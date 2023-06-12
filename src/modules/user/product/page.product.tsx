@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { IProduct, categoryProduct, findByCategory} from "../../../utils/resApiProduct";
+import { IProduct, categoryProduct, findByCategory } from "../../../utils/resApiProduct";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Divider } from "@chakra-ui/react";
 import logo from '../../../assets/img/banner-grand-piano-duc-tri.jpg'
-import { useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Products = () => {
   const [listProduct, setListProduct] = useState<IProduct[] | any>();
@@ -11,7 +11,7 @@ const Products = () => {
   const [selected, setSelected] = useState('0');
   const navigate = useNavigate()
   useEffect(() => {
-    const init = () => {
+    const init =  () => {
       setListProduct(products);
     }
     init();

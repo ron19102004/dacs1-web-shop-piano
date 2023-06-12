@@ -40,40 +40,28 @@ export interface ICreateProductDto {
   quantity: number;
   status: string;
 }
-const item: IProduct = {
-  name: "ĐÀN PIANO STEINWAY LOUIS M-170",
-  img: "https://pianoductri.com/wp-content/uploads/2023/03/Dan-Piano-Yamaha-YU3SZ.jpg",
-  description: `Thiết kế Louis XV trên đàn Piano Steinway Louis M-170
-  Hoa lan tây (hay còn gọi là Acanthus) là một loại hoa được yêu thích trong nghệ thuật và trang trí, và nó thường được sử dụng để trang trí trên các thiết kế nội thất và đồ dùng trong phong cách Louis XV.
+// const item: IProduct = {
+//   name: "ĐÀN PIANO STEINWAY LOUIS M-170",
+//   img: "https://pianoductri.com/wp-content/uploads/2023/03/Dan-Piano-Yamaha-YU3SZ.jpg",
+//   description: `Thiết kế Louis XV trên đàn Piano Steinway Louis M-170
+//   Hoa lan tây (hay còn gọi là Acanthus) là một loại hoa được yêu thích trong nghệ thuật và trang trí, và nó thường được sử dụng để trang trí trên các thiết kế nội thất và đồ dùng trong phong cách Louis XV.
   
-  Phong cách Louis XV xuất hiện ở Pháp vào giữa thế kỷ 18 và được đặc trưng bởi những đường cong mềm mại, hoa văn tinh tế và trang trí tỉ mỉ. Hoa lan tây thường được sử dụng để trang trí các đồ nội thất trong phong cách này.
+//   Phong cách Louis XV xuất hiện ở Pháp vào giữa thế kỷ 18 và được đặc trưng bởi những đường cong mềm mại, hoa văn tinh tế và trang trí tỉ mỉ. Hoa lan tây thường được sử dụng để trang trí các đồ nội thất trong phong cách này.
   
-  Chiếc đàn Piano Steinway này được điểm xuyết bằng họa tiết hoa lan tây tại các khối chân đàn, với sự kết hợp của những đường cong mềm mại của phong cách Louis XV tạo cho chiếc đàn một tổng thể sang trọng và tinh tế.
+//   Chiếc đàn Piano Steinway này được điểm xuyết bằng họa tiết hoa lan tây tại các khối chân đàn, với sự kết hợp của những đường cong mềm mại của phong cách Louis XV tạo cho chiếc đàn một tổng thể sang trọng và tinh tế.
   
-  Cây đàn piano tuyệt đẹp này được chế tạo trong Kỷ nguyên vàng của sản xuất đàn piano Mỹ. Được biết đến với cái tên ” Model M”, đàn piano này được làm từ gỗ óc chó tuyệt đẹp theo phong cách chạm khắc Louis XV quý hiếm.
+//   Cây đàn piano tuyệt đẹp này được chế tạo trong Kỷ nguyên vàng của sản xuất đàn piano Mỹ. Được biết đến với cái tên ” Model M”, đàn piano này được làm từ gỗ óc chó tuyệt đẹp theo phong cách chạm khắc Louis XV quý hiếm.
   
-  `,
-  price: "1,650,000,000₫",
-  category: categoryProduct.grand,
-  color: "Gỗ",
-  brand: "Steinway & Sons",
-  origin: "New York",
-  id: 1,
-  quantity: 10,
-  status: statusProduct.exists,
-};
-const products: IProduct[] = [];
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-products.push(item);
-
+//   `,
+//   price: "1,650,000,000₫",
+//   category: categoryProduct.grand,
+//   color: "Gỗ",
+//   brand: "Steinway & Sons",
+//   origin: "New York",
+//   id: 1,
+//   quantity: 10,
+//   status: statusProduct.exists,
+// };
 const findAllProducts = async (dispatch: any) => {
   dispatch(startUpdateProduct());
   try {
@@ -141,4 +129,4 @@ const createProduct = async (product: ICreateProductDto, dispatch: any) => {
     console.log(error);
   }
 };
-export { findAllProducts, findByCategory, createProduct, products,findByIdProduct };
+export { findAllProducts, findByCategory, createProduct,findByIdProduct };

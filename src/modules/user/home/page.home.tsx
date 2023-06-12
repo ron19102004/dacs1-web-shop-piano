@@ -14,8 +14,7 @@ import ROUTE from '../../../utils/routes.json'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { updateProduct } from '../../../redux/slide.redux'
-import { products } from '../../../utils/resApiProduct'
+import { findAllProducts } from '../../../utils/resApiProduct'
 const routes = ROUTE[0];
 const HomePage = () => {
   const audio = new Audio(cung_chuc_trinh_vuong)
@@ -24,8 +23,8 @@ const HomePage = () => {
   const pauseAudio = async () => audio.pause();
   const dispatch = useDispatch()
   useEffect(() => {
-    const init = () => {
-      dispatch(updateProduct(products))
+    const init = async () => {
+      await findAllProducts(dispatch)
     }
     init()
   }, [])
