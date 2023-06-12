@@ -6,6 +6,9 @@ import ROUTE from '../../../utils/routes.json'
 const routes = ROUTE[0];
 import './style.auth.scss'
 import logo from '../../../assets/img/logo/1.png'
+import { Role, register } from "../../../utils/resApiAccount";
+import { useToast } from "@chakra-ui/react";
+import { isEmail } from '../../../utils/validate'
 const RegisterPage = () => {
   const user = useSelector((state: any) => state.persisted.auth.login.userCurrent);
   const navigate = useNavigate()
@@ -16,13 +19,36 @@ const RegisterPage = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('')
   const [address, setAddress] = useState('')
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState('https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png')
   const [username, setUsername] = useState('')
+  const toast = useToast({
+    position: 'top',
+    duration: 3000,
+    isClosable: true,
+  })
   useEffect(() => {
     if (user) navigate('/')
   }, [])
   const submitRegister = (e: any) => {
-    const data = {
+    e.preventDefault();
+    if(passwordConfirmation.trim() !== password.trim()){
+      toast({
+        title: 'Lỗi mật khẩu',
+        status: 'error',
+        description: 'Mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại'
+      })
+      return;
+    }
+    if (!isEmail(email.trim())) {
+      toast({
+        title: 'Lỗi email',
+        status: 'error',
+        description: 'Vui lòng kiểm tra lại email. Email phải có đuôi @vku.udn.vn hoặc @gmail.com'
+      })
+      return;
+    }
+    register({
+      id: 'INCREMENT',
       firstname: firstName,
       lastname: lastName,
       email: email,
@@ -30,11 +56,10 @@ const RegisterPage = () => {
       phone: phoneNumber,
       address: address,
       img: url,
-      username: username
-    }
-    alert(data)
-    console.log(passwordConfirmation);
-    e.preventDefault();
+      username: username,
+      accept: 1,
+      role: Role.user
+    }, toast, navigate)
   }
   return (
     <main className="min-w-screen min-h-screen relative">
@@ -51,46 +76,46 @@ const RegisterPage = () => {
           <div className="wrap-input grid gap-4 grid-cols-1 xl:grid-cols-3">
             <div className="gr-input-item flex flex-col">
               <label>Họ và tên đệm</label>
-              <input type="text" placeholder="Nhập họ và tên đệm"
+              <input type="text" placeholder="Nhập họ và tên đệm (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
-                onChange={(e: any) => setFirstName(e.target.value)} required/>
+                onChange={(e: any) => setFirstName(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Tên</label>
-              <input type="text" placeholder="Nhập tên người dùng"
+              <input type="text" placeholder="Nhập tên người dùng (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
-                onChange={(e: any) => setLastName(e.target.value)} required/>
+                onChange={(e: any) => setLastName(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Tên tài khoản</label>
-              <input type="text" placeholder="Nhập tên tài khoản"
+              <input type="text" placeholder="Nhập tên tài khoản (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
-                onChange={(e: any) => setUsername(e.target.value)} required/>
+                onChange={(e: any) => setUsername(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Email</label>
-              <input type="email" placeholder="Nhập email"
+              <input type="email" placeholder="Nhập email (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
-                onChange={(e: any) => setEmail(e.target.value)} required/>
+                onChange={(e: any) => setEmail(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Mật khẩu</label>
-              <input type="password" placeholder="Nhập mật khẩu"
+              <input type="password" placeholder="Nhập mật khẩu (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
                 onChange={(e: any) => setPassword(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Nhập lại mật khẩu</label>
-              <input type="password" placeholder="Nhập lại mật khẩu"
+              <input type="password" placeholder="Nhập lại mật khẩu (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
                 onChange={(e: any) => setPasswordConfirmation(e.target.value)} required
               />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Số điện thoại</label>
-              <input type="text" placeholder="Nhập số điện thoại"
+              <input type="text" placeholder="Nhập số điện thoại (*)"
                 className="w-[100%] h-12 rounded-md pl-3 outline-none border-2 cl-1"
-                onChange={(e: any) => setPhoneNumber(e.target.value)} />
+                onChange={(e: any) => setPhoneNumber(e.target.value)} required />
             </div>
             <div className="gr-input-item flex flex-col">
               <label>Địa chỉ</label>

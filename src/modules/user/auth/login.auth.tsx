@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import './style.auth.scss'
 import ROUTE from '../../../utils/routes.json'
 import logo from '../../../assets/img/logo/1.png'
+import { login } from "../../../utils/resApiAccount";
 const routes = ROUTE[0];
 const LoginPage = () => {
   const user = useSelector((state: any) => state.persisted.auth.login.userCurrent);
@@ -27,7 +28,7 @@ const LoginPage = () => {
     }
     console.log(data);
     e.preventDefault()
-    // login({ username, password }, dispatch, toast, navigate)
+    login({ username, password }, dispatch, toast, navigate)
   }
   return (
     <main className="min-w-screen min-h-screen relative">

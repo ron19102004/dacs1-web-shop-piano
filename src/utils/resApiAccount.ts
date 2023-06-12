@@ -1,8 +1,31 @@
 import axios from "axios";
 import ENV from "../utils/env.json";
-import { errorLogin, loginSuccess, startLogin } from "../redux/slide.redux";
+import {
+  errorLogin,
+  loginSuccess,
+  logoutError,
+  logoutSuccess,
+  startLogin,
+} from "../redux/slide.redux";
 import { isEmail } from "./validate";
 const env = ENV[0];
+export enum Role {
+  admin = "admin",
+  user = "user",
+}
+export interface IRegister {
+  id: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
+  username: string;
+  email: string;
+  password: string;
+  address: string;
+  img: string;
+  role: string;
+  accept: number;
+}
 const login = async (
   payload: { username: string; password: string },
   dispatch: any,
@@ -49,4 +72,34 @@ const login = async (
     console.log(error);
   }
 };
-export { login };
+const logout = (dispatch: any, navigate: any) => {
+  try {
+    dispatch(logoutSuccess());
+    navigate("/");
+  } catch (error) {
+    dispatch(logoutError());
+    console.log("error", error);
+  }
+};
+const register = async (payload: IRegister, toast: any, navigate: any) => {
+  try {
+    await axios.post(`${env.api}?sheet=account`, payload, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    toast({
+      title:'Đăng kí thành công',
+      status:"success"
+    })
+    navigate('/login')
+  } catch (error) {
+    toast({
+      title:'Lỗi đăng kí. Xin thử lại',
+      status: 'error',
+    })
+    console.log("error", error);
+  }
+};
+export { login, logout , register};

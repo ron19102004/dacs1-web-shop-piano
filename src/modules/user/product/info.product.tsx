@@ -64,7 +64,11 @@ const InfoProduct = () => {
                 </li>
               </ul>
               <div className="btn-order">
-                <button className="px-3 py-2 rounded-md bg-4 cl-1 hover:bg-yellow-400">Đặt ngay</button>
+                <button className="px-3 py-2 rounded-md bg-4 cl-1 hover:bg-yellow-400"
+                onClick={()=>{
+                  navigate(`/booking/${id}`)
+                }}
+                >Đặt ngay</button>
               </div>
             </div>
           </div>

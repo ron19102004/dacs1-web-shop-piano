@@ -6,6 +6,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../../../assets/img/logo/1.png';
 import ROUTE from '../../../utils/routes.json'
+import { useDispatch, useSelector } from 'react-redux';
+import { Avatar, Tooltip } from '@chakra-ui/react';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { logout } from '../../../utils/resApiAccount';
 const routes = ROUTE[0];
 interface INavLink {
   title: string;
@@ -18,9 +23,14 @@ const listLink: INavLink[] = [
   { title: 'Liên hệ', to: routes.routes_user.contact }
 ]
 const Header = () => {
+  const user = useSelector((state: any) => state.persisted.auth.login.userCurrent)
   const [openMenu, setOpenMenu] = useState(false);
   const changeMenu = () => setOpenMenu(!openMenu);
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const logOut = () => {
+    logout(dispatch, navigate)
+  }
   return (
     <header className="min-w-screen lg:py-2 z-50 relative lg:static">
       <div className="status-mobile flex justify-between lg:hidden">
@@ -64,12 +74,31 @@ const Header = () => {
             })}
           </ul>
           <div className="gr-status-right my-auto flex flex-col lg:flex-row bg-1">
-            <NavLink to={routes.login} className={'login flex font-bold cl-4 space-x-1 border-2 border-cyan-700 py-2 px-3 lg:rounded-full hover:border-cyan-500'}>
-              <h1>Login</h1>
+            {user ? (
+              <div className="wrap-acc flex flex-col lg:flex-row lg:space-x-5">
+                <Tooltip label={user?.username}>
+                  <NavLink to={routes.routes_user.dashboard} className={'flex space-x-2 border-t-2 border-l-2 border-r-2 lg:border-2 border-cyan-700 p-1 lg:rounded-full hover:border-cyan-500'}>
+                    <Avatar
+                      name={user?.name}
+                      src={user?.img}
+                    />
+                    <span className='my-auto font-bold text-base'>{user?.lastname}</span>
+                  </NavLink>
+                </Tooltip>
+                <button className='font-bold text-base flex space-x-1 border-2 border-cyan-700 p-1 lg:rounded-full hover:border-cyan-500' onClick={logOut}>
+                  <span className='my-auto'><LogoutIcon /></span>
+                  <span className='my-auto'>Đăng xuất</span>
+                </button>
+              </div>
+            ) : (<NavLink to={routes.login} className={'login flex font-bold cl-4 space-x-1 border-2 border-cyan-700 py-2 px-3 lg:rounded-full hover:border-cyan-500'}>
+              <div className="flex space-x-1">
+                <span className='my-auto'><AccountCircleIcon /></span>
+                <h1 className='my-auto'>Đăng nhập</h1>
+              </div>
               <div className="arrow">
                 <ArrowRightAltIcon className='icon-arrow' />
               </div>
-            </NavLink>
+            </NavLink>)}
           </div>
         </nav>
       </div>

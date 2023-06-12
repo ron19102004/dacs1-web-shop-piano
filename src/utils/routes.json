@@ -18,6 +18,7 @@
         "delivery-policy": "/delivery-policy"
       },
       "booking": "/booking/:id",
+      "dashboard": "/dashboard",
       "social": {
         "facebook": "https://www.facebook.com/ron292004/",
         "instagram": "none",

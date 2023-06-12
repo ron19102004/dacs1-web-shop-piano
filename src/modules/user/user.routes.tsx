@@ -6,6 +6,7 @@ import ROUTE from '../../utils/routes.json'
 import Products from "./product/page.product";
 import BookingPage from "./booking/page.booking";
 import InfoProduct from "./product/info.product";
+import DashBoard from "./dashboard/page.dashboard";
 const routes = ROUTE[0];
 const UserRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const UserRoutes = () => {
           <Route path={routes.routes_user.product["/"]} element={<Products />} />
           <Route path={routes.routes_user.booking} element={<BookingPage />} />
           <Route path={routes.routes_user.product["/:id"]} element={<InfoProduct />} />
+          <Route path={routes.routes_user.dashboard} element={<DashBoard />} />
         </Routes>
       </div>
       <Footer />

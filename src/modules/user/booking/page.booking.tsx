@@ -4,7 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IProduct, findByIdProduct } from "../../../utils/resApiProduct";
 import ROUTE from '../../../utils/routes.json'
 import QR from '../../../assets/img/bank.jpg'
-import { Tooltip } from "@chakra-ui/react";
+import { Tooltip, useToast } from "@chakra-ui/react";
+import { createBooking, statusBooking } from "../../../utils/resApiBooking";
 const routes = ROUTE[0]
 const BookingPage = () => {
   const products = useSelector((state: any) => state.persisted.product.products)
@@ -12,8 +13,13 @@ const BookingPage = () => {
   const [product, setProduct] = useState<IProduct | any>()
   const { id } = useParams();
   const navigate = useNavigate()
+  const toast = useToast({
+    position: 'top',
+    duration: 3000,
+    isClosable: true,
+  })
   useEffect(() => {
-    // if(!user) navigate(routes.login)
+    if(!user) navigate(routes.login)
     console.log(user)
     if (id) {
       const init = () => {
@@ -24,6 +30,18 @@ const BookingPage = () => {
       init()
     } else navigate(routes.routes_user.product["/"]);
   }, [])
+  const verify = async() => {
+    const date = new Date();
+    const time = date.getDate()+'-'+(date.getMonth() + 1)+'-'+date.getFullYear();    
+    await createBooking({
+      id: "INCREMENT",
+      idUser: user.id+'',
+      idProduct: id+'',
+      verify: 'yes',
+      createAt: time,
+      status: statusBooking.p
+    }, toast, navigate)
+  }
   return (
     <div className="min-w-screen mt-3 lg:mt-0">
       {product ? (
@@ -70,7 +88,9 @@ const BookingPage = () => {
                 <label className="font-extrabold cursor-pointer">Điền mã xác thực đã thanh toán</label>
               </Tooltip>
               <input type="text" placeholder="Nhập mã xác thực" className="w-64 rounded-md h-8 px-2 outline-none cl-1" />
-              <button className="bg-green-500 px-2 py-1 rounded-sm my-2">Xác thực</button>
+              <button className="bg-green-500 px-2 py-1 rounded-sm my-2"
+              onClick={verify}
+              >Xác thực</button>
             </div>
           </div>
         </div>
