@@ -7,6 +7,7 @@ import Products from "./product/page.product";
 import BookingPage from "./booking/page.booking";
 import InfoProduct from "./product/info.product";
 import DashBoard from "./dashboard/page.dashboard";
+import AboutUsPage from "./about-us/page.about-us";
 const routes = ROUTE[0];
 const UserRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const UserRoutes = () => {
           <Route path={routes.routes_user.booking} element={<BookingPage />} />
           <Route path={routes.routes_user.product["/:id"]} element={<InfoProduct />} />
           <Route path={routes.routes_user.dashboard} element={<DashBoard />} />
+          <Route path={routes.routes_user.about_us} element={<AboutUsPage />} />
         </Routes>
       </div>
       <Footer />

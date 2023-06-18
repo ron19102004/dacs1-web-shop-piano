@@ -22,7 +22,7 @@ const InfoProduct = () => {
     <div className="min-w-screen pt-3 md:pt-0">
       {product ? (
         <div className="container mx-auto space-y-4 pt-2">
-          <div className="booking-header bg-3 rounded-md flex py-2 pl-4 ">
+          <div className="booking-header bg-3 rounded-md flex py-2 pl-4 shadow-lg shadow-blue-800 ">
             <button onClick={() => navigate(-1)}>
               <ArrowBackIcon />
             </button>
@@ -74,8 +74,8 @@ const InfoProduct = () => {
           </div>
         </div>
       ) : (
-        <div className="error container mx-auto">
-          <h1 className="text-center text-3xl">Sản phẩm không tồn tại.</h1>
+        <div className="error container mx-auto py-4 rounded-xl bg-2 shadow-xl shadow-blue-700 my-4">
+          <h1 className="text-center text-base md:text-lg lg:text-2xl xl:text-4xl cl-4 font-bold">Sản phẩm không tồn tại.</h1>
         </div>
       )}
     </div>
