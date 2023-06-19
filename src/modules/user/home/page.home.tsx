@@ -81,7 +81,7 @@ const HomePage = () => {
                 </p>
               </div>
               <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
-                onClick={() => navigate(routes.routes_user.product['grand-piano'])}
+                onClick={() => navigate(routes.routes_user.product['/'])}
               >
                 Xem thêm
               </button>
@@ -99,7 +99,7 @@ const HomePage = () => {
                 </p>
               </div>
               <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
-                onClick={() => navigate(routes.routes_user.product['piano-electronic'])}
+                onClick={() => navigate(routes.routes_user.product['/'])}
               >
                 Xem thêm
               </button>
@@ -118,7 +118,7 @@ const HomePage = () => {
                 </p>
               </div>
               <button className='border-2 px-7 py-2 hover:bg-white hover:text-yellow-800'
-                onClick={() => navigate(routes.routes_user.product['piano-steinway-sons'])}
+                onClick={() => navigate(routes.routes_user.product['/'])}
               >
                 Xem thêm
               </button>

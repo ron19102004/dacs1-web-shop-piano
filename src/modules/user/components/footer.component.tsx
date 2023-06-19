@@ -43,9 +43,9 @@ const listContacts: IContact[] = [
   { icon: <EmailIcon />, content: routes.routes_user.social.email },
 ]
 const bestSeller: IGoods[] = [
-  { content: "Grand Piano", href: routes.routes_user.product['grand-piano'] },
-  { content: "Piano điện", href: routes.routes_user.product['piano-electronic'] },
-  { content: "Piano Steinway & Sons", href: routes.routes_user.product['piano-steinway-sons'] }
+  { content: "Grand Piano", href: routes.routes_user.product['/'] },
+  { content: "Piano điện", href: routes.routes_user.product['/'] },
+  { content: "Piano Steinway & Sons", href: routes.routes_user.product['/'] }
 ]
 const listSupports: ISupport[] = [
   { content: "Chính sách bảo hành", href: routes.routes_user.policy['warranty-policy'] },

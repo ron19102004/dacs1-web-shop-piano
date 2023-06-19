@@ -20,7 +20,6 @@ const listLink: INavLink[] = [
   { title: 'Trang chủ', to: routes.routes_user.home },
   { title: 'Sản phẩm', to: routes.routes_user.product['/'] },
   { title: 'Về chúng tôi', to: routes.routes_user.about_us },
-  { title: 'Liên hệ', to: routes.routes_user.contact }
 ]
 const Header = () => {
   const user = useSelector((state: any) => state.persisted.auth.login.userCurrent)

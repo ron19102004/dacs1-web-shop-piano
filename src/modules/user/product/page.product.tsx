@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { IProduct, categoryProduct, findByCategory } from "../../../utils/resApiProduct";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Divider } from "@chakra-ui/react";
-import logo from '../../../assets/img/banner-grand-piano-duc-tri.jpg'
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Products = () => {
   const [listProduct, setListProduct] = useState<IProduct[] | any>();
@@ -11,7 +10,7 @@ const Products = () => {
   const [selected, setSelected] = useState('0');
   const navigate = useNavigate()
   useEffect(() => {
-    const init =  () => {
+    const init = () => {
       setListProduct(products);
     }
     init();
@@ -71,7 +70,7 @@ const Products = () => {
             <div className="card-product bg-2 hover:shadow-lg hover:shadow-blue-900 transition-all rounded-lg p-4 space-y-3 flex flex-col justify-between" key={index}>
               <div className="content-product-card space-y-3">
                 <div className="card-header-product w-full">
-                  <img src={logo} alt="img-product" className="object-cover rounded-lg" />
+                  <img src={item.img} alt="img-product" className=" h-48 w-[100%] object-cover rounded-lg" />
                 </div>
                 <div className="card-body-product">
                   <h1 className="name-product font-semibold text-ellipsis line-clamp-2">{item.name}</h1>

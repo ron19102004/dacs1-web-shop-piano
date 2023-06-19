@@ -13,7 +13,6 @@ const InfoProduct = () => {
       const init = () => {
         const product = findByIdProduct(products, id);
         if (product) setProduct(product)
-        console.log(product);
       }
       init()
     } else navigate('/products');
